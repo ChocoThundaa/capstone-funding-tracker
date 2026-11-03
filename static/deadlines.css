@@ -1,1 +1,37 @@
-/* Styles for deadlines.js. Empty for now. */
+.deadline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.deadline-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.deadline-overdue {
+  color: #991b1b;
+}
+
+.deadline-overdue .deadline-label {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.deadline-today,
+.deadline-soon {
+  color: #92400e;
+}
+
+.deadline-today .deadline-label,
+.deadline-soon .deadline-label {
+  background: #fef3c7;
+  color: #92400e;
+}
