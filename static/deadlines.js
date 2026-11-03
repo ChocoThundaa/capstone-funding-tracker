@@ -1,11 +1,9 @@
 // This runs once for every row in the table.
-//   row          the table row (<tr>)
-//   cell         the deadline cell (<td>)
+//   cell         the deadline status cell (<td>)
 //   opportunity  the row's data, including days_left from the server
-function showDeadline(row, cell, opportunity) {
+function showDeadline(cell, opportunity) {
   const daysLeft = Number(opportunity.days_left);
 
-  // Only date-specific labels are shown for dates that are overdue or due soon.
   if (Number.isNaN(daysLeft)) {
     return;
   }
@@ -24,7 +22,7 @@ function showDeadline(row, cell, opportunity) {
     return;
   }
 
-  if (daysLeft <= 7) {
+  if (daysLeft > 0) {
     cell.classList.add("deadline-soon");
     const unit = daysLeft === 1 ? "day" : "days";
     addDeadlineLabel(cell, `Due in ${daysLeft} ${unit}`);
