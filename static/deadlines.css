@@ -1,1 +1,58 @@
-/* Styles for deadlines.js. Empty for now. */
+/* Styles for deadlines.js */
+
+/* The label shown next to the date, e.g. "Due in 3 days". */
+.deadline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* The little picture before the text. It's added by CSS, so the label text stays exactly "Overdue" etc. */
+.deadline-badge::before {
+  font-size: 0.9rem;
+}
+
+/* Late: hot chili red */
+.deadline-overdue {
+  background: linear-gradient(90deg, #ff5f6d, #e11d48);
+  color: #ffffff;
+}
+.deadline-overdue::before {
+  content: "🌶️";
+}
+
+/* In the next 7 days: honey yellow */
+.deadline-soon {
+  background: #fde68a;
+  color: #78350f;
+}
+.deadline-soon::before {
+  content: "🍯";
+}
+
+/* Today: sunshine yellow that gently glows */
+.deadline-today {
+  background: linear-gradient(90deg, #fff176, #facc15);
+  color: #713f12;
+  animation: deadline-glow 1.6s ease-in-out infinite;
+}
+.deadline-today::before {
+  content: "☀️";
+}
+
+@keyframes deadline-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.6); }
+  50%      { box-shadow: 0 0 0 6px rgba(250, 204, 21, 0); }
+}
+
+/* Turn the glow off for people who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .deadline-today {
+    animation: none;
+  }
+}
